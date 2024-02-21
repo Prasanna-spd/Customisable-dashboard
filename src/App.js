@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Dashboard from './components/Dashboard';
 
 function App() {
+  const [themeColor, setThemeColor] = useState('blue');
+
+  const handleThemeChange = (color) => {
+    setThemeColor(color);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ backgroundColor: themeColor }}>
+    {console.log("The theme color is ",themeColor)}
+      <h1 style={{textAlign:"center"}}>Customisable Dashboard App</h1>
+      <Dashboard onnewThemeChange={handleThemeChange}/>
     </div>
   );
 }
